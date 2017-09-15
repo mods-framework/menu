@@ -1,0 +1,24 @@
+{
+    "name": "mods/menu",
+    "description": "The Mods Framework.",
+    "keywords": ["framework", "mods", "menu"],
+    "license": "MIT",
+    "homepage": "https://thehackerleague.com",
+    "support": {
+        "issues": "https://github.com/mods-framework/menu/issues",
+        "source": "https://github.com/mods-framework/menu"
+    },
+    "authors": [
+        {
+            "name": "Sunel Tr",
+            "email": "sunelbe@gmail.com"
+        }
+    ],
+    "require": { 
+    },
+    "autoload": {
+        "psr-4": {
+            "Mods\\Menu\\": "src/"
+        }
+    }
+}
