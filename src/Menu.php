@@ -43,20 +43,21 @@ class Menu
 	 */
 	public function make()
 	{
-		return $this;
+		return new static($this->url);
 	}
 
 	/**
 	 * Add an item to the defined menu.
 	 *
+	 * @param  string       $uuid
 	 * @param  string       $title
 	 * @param  array|string $options
 	 *
 	 * @return Item
 	 */
-	public function add($title, $options = '')
+	public function add($uuid, $title, $options = '')
 	{
-		$item = new Item($this, $this->id(), $title, $options);
+		$item = new Item($this, $this->id(), $uuid, $title, $options);
 		$this->items->push($item);
 		$this->lastId = $item->id;
 		return $item;

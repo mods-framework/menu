@@ -60,12 +60,12 @@ class Item
 	 * @param  string                     $title
 	 * @param  array|string               $options
 	 */
-	public function __construct($menu, $id, $title, $options)
+	public function __construct($menu, $id, $uuid, $title, $options )
 	{
 		$this->menu    	  = $menu;
 		$this->id         = $id;
 		$this->title      = $title;
-		$this->slug       = camel_case(str_slug($title, ' '));
+		$this->slug       = camel_case(str_slug($uuid, ' '));
 		$this->attributes = $this->extractAttributes($options);
 		$this->parent     = (is_array($options) and isset($options['parent'])) ? $options['parent'] : null;
 		$this->configureLink($options);
@@ -93,12 +93,13 @@ class Item
 
 	/**
 	 * Adds a sub item to the menu.
-	 *
+	 * 
+	 * @param  string        $uuid
 	 * @param  string        $title
 	 * @param  array|string  $options
 	 * @return \Mods\Menu\Item
 	 */
-	public function add($title, $options = '')
+	public function add($uuid, $title, $options = '')
 	{
 		if (! is_array($options)) {
 			$url  = $options;
@@ -107,7 +108,7 @@ class Item
 			];
 		}
 		$options['parent'] = $this->id;
-		return $this->menu->add($title, $options);
+		return $this->menu->add($uuid, $title, $options);
 	}
 
 
