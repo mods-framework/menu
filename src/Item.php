@@ -206,6 +206,9 @@ class Item
 	{
 		$item = (is_null($item)) ? $this : $item;
 		$this->attributes['class'] = $this->menu->formatGroupClass(['class' => 'active'], $this->attributes);
+		if (! is_null($this->link)) {
+			$item->link->active();
+		}
 		$item->data('active', true);
 		if ($item->parent) {
             $parent = $this->menu->where('id', $item->parent)->first();
