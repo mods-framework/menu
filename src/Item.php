@@ -82,6 +82,11 @@ class Item
 	 */
 	public function configureLink($options)
 	{
+		if(empty($options)) {
+			$this->link = null;
+			return;
+		}
+
 		if (! is_array($options)) {
 			$path = ['url' => $options];
 		} else {
@@ -205,8 +210,8 @@ class Item
 	public function activate(Item $item = null)
 	{
 		$item = (is_null($item)) ? $this : $item;
-		$this->attributes['class'] = $this->menu->formatGroupClass(['class' => 'active'], $this->attributes);
-		if (! is_null($this->link)) {
+		$item->attributes['class'] = $this->menu->formatGroupClass(['class' => 'active'], $item->attributes);
+		if (!is_null($item->link)) {
 			$item->link->active();
 		}
 		$item->data('active', true);
